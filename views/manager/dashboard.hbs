@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            <a id="exportbtn" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                    class="fa fa-download fa-sm text-white-50"></i> Generate Report</a>
+        </div>
+        <div id="dashboard_img">
+
+
+            <!-- Content Row -->
+            <div class="row">
+
+                <!-- Earnings (Monthly) Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary  shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary  text-uppercase mb-1">Total Likes
+                                    </div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <div id="total_like" class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                                {{total_like}}</div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="progress progress-sm mr-2">
+                                                <div class="progress-bar bg-primary " role="progressbar"
+                                                    style="width: {{like_rate}}%" aria-valuenow="50" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fa fa-thumbs-up fa-2x" style="color: rgb(88, 88, 251);"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Earnings (Monthly) Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-danger shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Total Dislikes
+                                    </div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <div id="total_dislike" class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                                {{total_dislike}}</div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="progress progress-sm mr-2">
+                                                <div class="progress-bar bg-danger" role="progressbar"
+                                                    style="width: {{dislike_rate}}%" aria-valuenow="50"
+                                                    aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fa fa-thumbs-down fa-2x" style="color: rgb(246, 88, 88);"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        Posts</div>
+                                    <div id="total_post" class="h5 mb-0 font-weight-bold text-gray-800">{{total_post}}
+                                    </div>
+                                </div>
+
+                                <div class="col-auto">
+                                    <i class="fa fa-lightbulb-o fa-2x" style="color: rgb(4, 177, 58);"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pending Requests Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-warning shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                        Total Comments</div>
+                                    <div id="total_comment" class="h5 mb-0 font-weight-bold text-gray-800">
+                                        {{total_comment}}</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fa fa-comment fa-2x" style="color: rgb(249, 223, 21);"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Row -->
+
+            <div class="row">
+
+                <!-- Area Chart -->
+                <div class="col-xl-8 col-lg-7">
+                    <div class="card shadow mb-4">
+                        <!-- Card Header - Dropdown -->
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-primary">Interaction (Like, Dislike, Comment) Overview
+                            </h6>
+
+                        </div>
+                        <!-- Card Body -->
+                        <div class="card-body">
+                            <div class="chart-area">
+                                <canvas id="myAreaChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Post Overview</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-bar">
+                                <canvas id="myBarChart"></canvas>
+                            </div>
+                            <hr>
+                            <code>  &nbsp; </code>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bar Chart -->
+
+
+                <!-- Pie Chart -->
+                <div class="col-xl-4 col-lg-5">
+                    <div class="card shadow mb-4">
+                        <!-- Card Header - Dropdown -->
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-primary">Departments</h6>
+
+                        </div>
+                        <!-- Card Body -->
+                        <div class="card-body">
+                            <div class="chart-pie pt-4 pb-2">
+                                <canvas id="myPieChart"></canvas>
+                            </div>
+                            <div class="mt-4 text-center small">
+                                <span class="mr-2">
+                                    <i class="fa fa-circle text-primary"></i> IT
+                                </span>
+                                <span class="mr-2">
+                                    <i class="fa fa-circle text-success"></i> Business
+                                </span>
+                                <span class="mr-2">
+                                    <i class="fa fa-circle text-info"></i> Design
+                                </span>
+                                <span class="mr-2">
+                                    <i class="fa fa-circle text-danger"></i> Marketing
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-4">
+                        <!-- Card Header - Dropdown -->
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-primary">Popular posts</h6>
+
+                        </div>
+                        <!-- Card Body -->
+                        <div class="card-body">
+                            <div class="chart-pie pt-2 pb-2">
+                                <ol>
+                                    {{#each top_ten}}
+                                    <li style="margin-top: 13px;">
+                                        Title: {{this.title}} <span class="float-right">
+                                            <i class="fa fa-thumbs-up" style="color: rgb(88, 88, 251);"></i>:
+                                            {{this.like}} &nbsp;
+                                            <i class="fa fa-thumbs-down" style="color: rgb(249, 34, 34);"></i>:
+                                            {{this.dislike}}
+                                        </span>
+
+                                    </li>
+                                    {{/each}}
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Content Row -->
+            <div class="row">
+
+                <!-- Content Column -->
+                <div class="col-lg-6 mb-4">
+
+                    <!-- Project Card Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Users</h6>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="small font-weight-bold">Staff <span class="float-right">{{staff_rate}}%</span>
+                            </h4>
+                            <div class="progress mb-4">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: {{staff_rate}}%"
+                                    aria-valuenow="{{staff_rate}}" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <h4 class="small font-weight-bold">Admin <span class="float-right">{{admin_rate}}%</span>
+                            </h4>
+                            <div class="progress mb-4">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: {{admin_rate}}%"
+                                    aria-valuenow="{{admin_rate}}" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <h4 class="small font-weight-bold">QA Manager <span
+                                    class="float-right">{{qamanager_rate}}%</span></h4>
+                            <div class="progress mb-4">
+                                <div class="progress-bar" role="progressbar" style="width: {{qamanager_rate}}%"
+                                    aria-valuenow="{{qamanager_rate}}" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <h4 class="small font-weight-bold">QC Manager <span
+                                    class="float-right">{{qcmanager_rate}}%</span></h4>
+                            <div class="progress mb-4">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: {{qamanager_rate}}%"
+                                    aria-valuenow="{{qamanager_rate}}" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="col-lg-6 mb-4">
+
+                    <!-- Illustrations -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 26.5rem;"
+                                    src="https://labocare.org/assets/img/undraw_posting_photo.svg" alt="...">
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <input type="hidden" id="all_department" value="{{name_department}}">
+            <input type="hidden" id="total_idea_department" value="{{total_idea_department}}">
+            <input type="hidden" id="month" value="{{month}}">
+            <input type="hidden" id="total_idea_month" value="{{total_idea_month}}">
+            <input type="hidden" id="total_interact_month" value="{{total_interact_month}}">
+        </div>
+        
+</body>
+
+<script src="../../socket.io/socket.io.js"></script>
+<script src="../../script/dashboard.js"></script>
+
+<script src="../../script/chart.js"></script>
+<script src="../../script/linechart.js"></script>
+<script src="../../script/piechart.js"></script>
+<script src="../../script/barchart.js"></script>
+
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+
+
+</html>

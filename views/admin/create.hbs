@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/1e27f03b11.js" crossorigin="anonymous"></script>
+    <link href="../css/ad_create.css" rel="stylesheet">
+    <title>Create new staff</title>
+</head>
+
+
+
+<body>
+    <div class="container">
+        <center>
+            <h4 class="">Create new staff</h4>
+        </center>
+        <div class="bg-white shadow rounded-lg d-block d-sm-flex">
+            <div class="profile-tab-nav border-right">
+                <div class="p-4">
+                    <div class="img-circle text-center mb-3">
+                        <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/12/Icon-Truong-Dai-hoc-Greenwich-Viet-Nam.png"
+                            alt="Image" class="shadow">
+                    </div>
+                    <h4 class="text-center">ADD</h4>
+                </div>
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab"
+                        aria-controls="account" aria-selected="true">
+                        <i class="fa fa-home text-center mr-1"></i>
+                        Create new staff
+                    </a>
+                </div>
+            </div>
+            <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
+                    <h4 class="mb-4">Staff Settings <i class="fa fa-cog" aria-hidden="true"></i></h4>
+                    <form action="/admin/create" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Full Name <i style="color: red;" class="fa fa-address-book"
+                                            aria-hidden="true"></i></label>
+                                    <input type="text" class="form-control" name="name" value="{{name}}"
+                                        placeholder="Enter name...">
+                                    <span id="error-name"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Username <i style="color: red;" class="fa fa-address-card"
+                                            aria-hidden="true"></i></label>
+                                    <input type="text" class="form-control" name="username" value="{{username}}"
+                                        placeholder="Enter username...">
+                                    <span id="error-username"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Email <i style="color: red;" class="fa fa-envelope-open"
+                                            aria-hidden="true"></i></label>
+                                    <input type="text" class="form-control" name="email" value="{{email}}"
+                                        placeholder="Enter email...">
+                                    <span id="error-email"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Password <i style="color: red;" class="fa fa-key"
+                                            aria-hidden="true"></i></label>
+                                    <input type="password" class="form-control" name="password" value="{{password}}"
+                                        placeholder="Enter password...">
+                                    <span id="error-password"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Phone <i style="color: red;"
+                                            class="fa fa-phone text-center mr-1"></i></label>
+                                    <input type="text" class="form-control" name="phone" value="{{phone}}"
+                                        placeholder="Enter phone number...">
+                                    <span id="error-phone"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="inputgender">Gender <i style="color: red;" class="fa fa-transgender-alt"
+                                            aria-hidden="true"></i></label>
+                                    <select id="inputgender" class="form-select" name="gender">
+                                        <option value="0">Choose Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                    <span id="error-gender"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="inputgender">Department <i style="color: red;" class="fa fa-building-o"
+                                            aria-hidden="true"></i></label>
+                                    <select id="inputdepartment" class="form-select" name="department">
+                                        <option value="0">Choose Department</option>
+                                        {{#each alldepartment}}
+                                        <option value="{{this.name}}">{{this.name}}</option>
+                                        {{/each}}
+                                    </select>
+                                    <span id="error-department"></span>
+                                </div>
+                            </div>
+
+                            {{!-- <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="inputrole"> Role <i style="color: red;" class="fa fa-user-circle"
+                                            aria-hidden="true"></i></label>
+                                    <select id="inputrole" class="form-select" name="role">
+                                        <option value="0">Choose Role</option>
+                                        <option value="admin">Admin </option>
+                                        <option value="staff">Staff</option>
+                                        <option value="manager">Manager</option>
+                                    </select>
+                                    <span id="error-role"></span>
+                                </div>
+                            </div> --}}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="inputgender">Image <i style="color: red;" class="fa fa-file-image-o"
+                                            aria-hidden="true"></i></label>
+                                    <input type="file" id="avatar" class="form-control" name="imageURL" value="">
+                                    <span id="error-file"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary mr-4">Create</button>
+                            <a href="/admin" class="btn btn-dark" style="color: aliceblue;">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+    <script>
+        var errors = [{{#each errors}} "{{this}}", {{/each}}]
+            var elements = {
+                error1: document.getElementById('error-name'),
+                error2: document.getElementById('error-username'),
+                error3: document.getElementById('error-password'),
+                error4: document.getElementById('error-phone'),
+                error5: document.getElementById('error-email'),
+                error6: document.getElementById('error-gender'),
+                error7: document.getElementById('error-role'),
+                error8: document.getElementById('error-file'),
+                error9: document.getElementById('error-department'),
+            }
+            for (let i = 0; i < errors.length; i++) {
+                if (errors[i] == "Name is required") {
+                    elements.error1.innerHTML = "Name is required"
+                }
+                if (errors[i] == "Username is required") {
+                    elements.error2.innerHTML = "Username is required"
+                }
+                if (errors[i] == "Username is exist") {
+                    elements.error2.innerHTML = "Username is exist"
+                }
+
+                if (errors[i] == "Password is required") {
+                    elements.error3.innerHTML = "Password is required"
+                }
+                if (errors[i] == "Phone is required") {
+                    elements.error4.innerHTML = "Phone is required"
+                }
+                if (errors[i] == "Phone is invalid") {
+                    elements.error4.innerHTML = "Phone is invalid"
+                }
+                if (errors[i] == "Email is required") {
+                    elements.error5.innerHTML = "Email is required"
+                }
+                if (errors[i] == "Email is invalid") {
+                    elements.error5.innerHTML = "Email is invalid"
+                }
+                if (errors[i] == "Gender is required") {
+                    elements.error6.innerHTML = "Gender is required"
+                }
+                if (errors[i] == "Role is required") {
+                    elements.error7.innerHTML = "Role is required"
+                }
+                if (errors[i] == "Image is required") {
+                    elements.error8.innerHTML = "Image is required"
+                }
+                if (errors[i] == "Department is required") {
+                    elements.error9.innerHTML = "Department is required"
+                }
+            }
+            
+           
+           
+            var genders = [{{#each re_gender}} "{{this}}", {{/each}}]
+            for (var i = 0; i < genders.length; i++) {
+                if (genders[i] == "Male") {
+                    document.getElementById('inputgender').options[1].selected = true;
+                }
+                if (genders[i] == "Female") {
+                    document.getElementById('inputgender').options[2].selected = true;
+                }
+                if (genders[i] == "Other") {
+                    document.getElementById('inputgender').options[3].selected = true;
+                }
+            }
+            var departments = [{{#each re_department}} "{{this}}", {{/each}}]
+            for (var i = 0; i < departments.length; i++) {
+                if (departments[i] == "IT") {
+                    document.getElementById('inputdepartment').options[1].selected = true;
+                }
+                if (departments[i] == "Business") {
+                    document.getElementById('inputdepartment').options[2].selected = true;
+                }
+                if (departments[i] == "Design") {
+                    document.getElementById('inputdepartment').options[3].selected = true;
+                }
+                if (departments[i] == "Marketing") {
+                    document.getElementById('inputdepartment').options[4].selected = true;
+                }
+            }
+
+            var images = [{{#each re_image}} "{{this}}", {{/each}}]
+            console.log(images)
+            for(var i=0; i<images.length; i++){
+                //set the value of the input to image
+                document.getElementById('avatar').value = images[i]
+            }
+
+    </script>
+</body>
+
+</html>

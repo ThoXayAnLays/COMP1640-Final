@@ -1,0 +1,136 @@
+<div class="container" style="margin-top: 8%;">
+    <div class="main-body">
+        <div class="row gutters-sm">
+
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+
+                            <img src="{{user.imgURL}}" alt="Admin" class="rounded-circle" width="150">
+                            <div class="mt-3">
+                                <h4>{{user.name}}</h4>
+                                <p class="text-secondary mb-1">Work at Greenwich</p>
+                                <p class="text-muted font-size-sm">National: VietNam</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap" style="margin-top: 20px;">
+                            <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-globe mr-2 icon-inline">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path
+                                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                    </path>
+                                </svg>Website</h6>
+                            <span class="text-secondary"><a href="/" style="text-decoration: none;">Idea Collection System</a></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap" style="margin-top: 20px;">
+                            <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-github mr-2 icon-inline">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    </path>
+                                </svg>Github</h6>
+                            <span class="text-secondary"><a
+                                    href="https://github.com/ImAnHoang/COMP1640-Final" style="text-decoration: none;">COMP1640-Final</a></span>
+                        </li>
+
+
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap" style="margin-top: 20px;">
+                            <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24">
+                                    <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2"
+                                        d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2zm-10-8v6m-3-3h6" />
+                                </svg>
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                </svg>Backlog
+                            </h6>
+                            <span class="text-secondary" ><a style="text-decoration: none;"
+                                    href="https://docs.google.com/spreadsheets/u/1/d/1Nqb16-Qo8hFcIxf-OmKDgF9KC663lRLfyHDk1G08HEQ/edit#gid=1280617121">Backlog-1640</a></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <center>
+                    <h2> Change Your Password</h2>
+                </center>
+                <form action="/user/change_password" method="post">
+                    <div class="mb-3">
+                        <input type="hidden" class="form-control" id="exampleInputEmail1" name="_id"
+                            value="{{user._id}}" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Email" class="form-label">Enter old password</label><i class="fa fa-key ml-3"
+                            aria-hidden="true"></i>
+                        <input type="password" class="form-control" id="exampleInputEmail1" name="old_pass"
+                            value="{{oldPass}}" value="">
+                        <span id="error-old-pass" style="color:red"> </span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Email" class="form-label">Enter new password</label><i class="fa fa-key ml-2"
+                            aria-hidden="true"></i>
+                        <input type="password" class="form-control" id="exampleInputEmail1" name="new_pass"
+                            value="{{newPass}}" value="">
+                        <span id="error-new-pass" style="color:red"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Email" class="form-label">Confirm password</label><i class="fa fa-key ml-4"
+                            aria-hidden="true"></i>
+                        <input type="password" class="form-control" id="exampleInputEmail1" name="confirm_pass"
+                            value="{{rePass}}" value="">
+                        <span id="error-confirm-pass" style="color:red"> </span>
+                    </div>
+
+                    <center>
+                        <button type="submit" class="btn btn-primary" id="open-modal-btn"
+                            style="margin-bottom: 1%; margin-top: 1%;" onclick="showModal()">Change
+                            Password</button>
+                    </center>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+<script>
+    var errors = [{{#each errors}}  "{{this}}", {{/each}}];
+        for (let i = 0; i < errors.length; i++) {
+            if (errors[i] == "Old password is required") {
+                document.getElementById('error-old-pass').innerHTML = errors[i];
+            }
+            if (errors[i] == "New password is required") {
+                document.getElementById('error-new-pass').innerHTML = errors[i];
+            }
+            if (errors[i] == "Confirm password is required") {
+                document.getElementById('error-confirm-pass').innerHTML = errors[i];
+            }
+            if (errors[i] == "Old password is not match") {
+                document.getElementById('error-old-pass').innerHTML = errors[i];
+            }
+            if (errors[i] == "Confirm password is not match") {
+                document.getElementById('error-confirm-pass').innerHTML = errors[i];
+            }
+
+        }
+
+
+</script>

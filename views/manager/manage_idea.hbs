@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>User Management Data Table</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/1e27f03b11.js" crossorigin="anonymous"></script>
+    <link href="../css/ad_index.css" rel="stylesheet">
+</head>
+<style>
+    /* The Modal (background) */
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgba(142, 139, 139, 0.4);
+        /* Black with opacity */
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 8% auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        max-width: 450px;
+    }
+
+    /* User Image */
+    .modal-content img {
+        display: block;
+        margin: 0 auto;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-content h3,
+    h4 {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .modal-content p {
+        text-align: center;
+        font-size: 15px;
+        margin-top: 10px;
+    }
+
+    /* Define the animation */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Apply the animation to the modal */
+    .modal.fade-in {
+        animation: fadeIn 0.3s;
+    }
+
+    .delete-btn {
+        background-color: #fd3d33;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 16px;
+        cursor: pointer;
+        margin-right: 10px;
+        border-radius: 8px;
+    }
+
+    .delete-btn:hover {
+        background-color: #fd5555;
+    }
+
+    .cancel-btn {
+        background-color: #3d3434;
+        color: #ffffff;
+        border: none;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        float: right;
+        border-radius: 8px;
+    }
+
+    .cancel-btn:hover {
+        background-color: #814f4f;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: white;
+    }
+</style>
+
+<body>
+    <div class="card mb-7">
+        <center>
+            <div class="card-header">
+                <h5 class="mb-0">Manager All Ideas </h5>
+            </div>
+        </center>
+        <span style="margin-left: 1%; margin-bottom:1%; color:rgb(107, 108, 108);font-size: smaller;">Total idea <i
+                class="fa fa-lightbulb-o" style="color: red;" aria-hidden="true"></i> : {{total_idea}} </span>
+
+        <div style=" display: inline-block; justify-content: flex-end; ">
+            <a style="display: inline-block;" href="/manager/download" class="button-link">Download All Files</a>
+            <a style="display: inline-block; margin-right:150px; background-color: #07ace3;" href="/manager/export"
+                class="button-link">Export CSV</a>
+            <a id="btncheck_download" style="display: inline-block; margin-right:265px; background-color: #161e24;" href="/manager/download_check"
+                class="button-link">Download</a>
+        </div>
+
+
+
+
+        <div class="table-responsive">
+            <table class="table table-hover table-nowrap">
+                <thead class="table-light">
+                    <tr>
+                        <th style="color: rgb(1, 1, 1);" scope="col">User</th>
+                        <th style="color: rgb(1, 1, 1);" scope="col">Title</th>
+                        <th style="color: rgb(1, 1, 1);" scope="col">Content</th>
+                        <th style="color: rgb(1, 1, 1);" scope="col">Date</th>
+                        <th style="color: rgb(1, 1, 1);" scope="col">Campaign</th>
+                        <th style="color: rgb(1, 1, 1);" scope="col">Category</th>
+                        <th style="color: rgb(1, 1, 1);" scope="col">Like</th>
+                        <th style="color: rgb(1, 1, 1);" scope="col">Dislike</th>
+                        <th style="color: rgb(1, 1, 1);" scope="col">Comments</th>
+                        <th style="color: rgb(1, 1, 1);" scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each allidea}}
+                    <tr>
+                        <td>
+                            <img alt="..." src="{{this.user_img}}" class="avatar avatar-sm rounded-circle me-2">
+                            <a class="text-heading font-semibold" href="#" style="font-size: 15px;">
+                                {{this.user_name}}
+                            </a>
+                        </td>
+                        <td style="font-size: small; padding-top:25px">
+                            {{this.title}}
+                        </td>
+                        <td style="font-size: small; padding-top:25px">
+                            {{this.content}}
+                        </td>
+                        <td style="font-size: small; padding-top:25px">
+                            {{this.date}}
+                        </td>
+                        <td style="font-size: small; padding-top:25px">
+                            {{this.campaign}}
+                        </td>
+                        
+                        <td style="font-size: small; padding-top:25px">
+                            {{this.category}}
+                        </td>
+                        <td style="color: rgb(55, 0, 255); font-size: small; padding-top:25px">
+                            {{this.like}}
+                        </td>
+                        <td style="color: red; font-size: small; padding-top:25px">
+                            {{this.dislike}}
+                        </td>
+                        <td style="color: red; font-size: small; padding-top:25px;">
+                            {{this.comment.length}}
+                        </td>
+                        <td>
+                            <input class="check_download" type="checkbox" value="{{this._id}}">
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <ul class="pagination modal-4">
+        <li><a href="" class="prev">
+                <i class="fa fa-chevron-left"></i>
+            </a>
+        </li>
+        {{#each total_page}}
+        <li><a href="/manager/manage_idea?page={{this}}">{{this}}</a></li>
+        {{/each}}
+
+        <li><a href="" class="next">
+                <i class="fa fa-chevron-right"></i>
+            </a></li>
+    </ul>
+    <script src="../../script/manage_idea.js"></script>
+</body>
+
+</html>

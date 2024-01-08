@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
+    
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/4661/4661361.png" type="image/x-icon">
+
+</head>
+
+<body id="page-top">
+
+    <div id="wrapper">
+        <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/manager">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fa fa-eercast" aria-hidden="true"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">GreenWich</div>
+            </a>
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="/manager">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    <span>Home / Dashboard</span></a>
+            </li>
+            <hr class="sidebar-divider">
+
+
+            <div class="sidebar-heading d-flex align-items-center justify-content-center">
+                Management
+            </div>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="/manager/manage_idea">
+                    <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                    <span>Manage Idea</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/manager/category">
+                    <i class="fa fa-list-alt" aria-hidden="true"></i>
+                    <span>Manage Category</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/manager/department">
+                    <i class="fa fa-building-o" aria-hidden="true"></i>
+                    <span>Manage Department</span></a>
+            </li>
+            
+
+            <br> <br> <br> 
+
+            <hr class="sidebar-divider d-none d-md-block">
+            <div class="sidebar-heading d-flex align-items-center justify-content-center">
+                MY ACCOUNT
+            </div>
+            <li class="nav-item">
+                <a class="nav-link" href="/user/profile">
+                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    <span>My Profile</span></a>
+            </li>
+
+    
+            <li class="nav-item">
+                <a class="nav-link" href="/user/change_password">
+                    <i class="fa fa-wrench" aria-hidden="true"></i>
+                    <span>Change Password</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/auth/logout">
+                    <i class="fa fa-power-off" aria-hidden="true"></i>
+                    <span>Logout</span></a>
+            </li>
+
+
+
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <form class="mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/manager/search" method="get">
+                        <div class="input-group">
+                            <input type="text" name="search" value="{{search}}" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fa fa-search-plus" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user.name}}</span>
+                                <img class="img-profile rounded-circle"
+                                    src="{{user.imgURL}}">
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                {{{body}}}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

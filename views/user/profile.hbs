@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <script src="https://kit.fontawesome.com/1e27f03b11.js" crossorigin="anonymous"></script>
+  <link href="../../css/ad_create.css" rel="stylesheet">
+  <link href="../../css/ad_create.css" rel="stylesheet">
+  <title>Edit Profile</title>
+</head>
+{{#if check}}
+<style>
+  body {
+    margin-top: 100px;
+  }
+</style>
+{{/if}}
+
+<body>
+  <div class="container">
+    <center>
+      <h4 class="">Update User Profile</h4>
+    </center>
+    <div class="bg-white shadow rounded-lg d-block d-sm-flex">
+      <div class="profile-tab-nav border-right">
+        <div class="p-4">
+          <div class="img-circle text-center mb-3">
+            <img src="{{ternary values values.imgURL user.imgURL}}" alt="Image" class="shadow">
+          </div>
+          <h4 class="text-center" style="color: red; font-size:18px;">{{ternary values values.name user.name}}</h4>
+          <h4 class="text-center" style="color: rgb(16, 14, 14); font-size:14px;"> Work in Greenwich</h4>
+        </div>
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab"
+            aria-controls="account" aria-selected="true">
+            <i class="fa-brands fa-critical-role"></i>
+            Update User Profile
+          </a>
+        </div>
+      </div>
+      <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
+          <h4 class="mb-4">User Settings <i class="fa fa-cog" aria-hidden="true"></i></h4>
+          <form action="/user/update" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="{{ternary values values.id user._id}}">
+            <input type="hidden" name="imgURL" value="{{ternary values values.imgURL user.imgURL}}">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Full Name <i style="color: red;" class="fa fa-address-book" aria-hidden="true"></i></label>
+                  <input type="text" class="form-control" name="name" value="{{ternary values values.name user.name}}">
+                  <span id="error-name"></span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Username <i style="color: red;" class="fa fa-address-card" aria-hidden="true"></i></label>
+                  <input type="text" class="form-control" name="username"
+                    value="{{ternary values values.username user.username}}" readonly>
+                  <span id="error-username"></span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Email <i style="color: red;" class="fa fa-envelope-open" aria-hidden="true"></i></label>
+                  <input type="text" class="form-control" name="email"
+                    value="{{ternary values values.email user.email}}" readonly>
+                  <span id="error-email"></span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Phone <i style="color: red;" class="fa fa-phone text-center mr-1"></i></label>
+                  <input type="text" class="form-control" name="phone"
+                    value="{{ternary values values.phone user.phone}}">
+                  <span id="error-phone"></span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputgender">Gender <i style="color: red;" class="fa fa-transgender-alt"
+                      aria-hidden="true"></i></label>
+                  <select id="inputgender" class="form-select" name="gender">
+                    <option value="0">Choose Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <span id="error-gender"></span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputgender">Image <i style="color: red;" class="fa fa-file-image-o"
+                      aria-hidden="true"></i></label>
+                  <input type="file" id="avatar" class="form-control" name="imageURL" value="">
+                  <span id="error-file"></span>
+                </div>
+              </div>
+
+
+            </div>
+            <div>
+              <button type="submit" class="btn btn-primary mr-4">Update</button>
+              <a href="/" class="btn btn-dark" style="color: aliceblue;">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    var gender = document.getElementById("inputgender");
+    var gender_value = "{{user.gender}}";
+    for (var i = 0; i < gender.options.length; i++) {
+      if (gender.options[i].value == gender_value) {
+        gender.options[i].selected = true;
+        break;
+      }
+    }
+    var errors = [{{#each errors}} "{{this}}", {{/each}}]
+      var elements = {
+                error1: document.getElementById('error-name'),
+                error4: document.getElementById('error-phone'),
+                error6: document.getElementById('error-gender'),
+                error8: document.getElementById('error-file'),
+                
+            }
+      for (let i = 0; i < errors.length; i++) {
+                if (errors[i] == "Name is required") {
+                    elements.error1.innerHTML = "Name is required"
+                }
+                if (errors[i] == "Phone is required") {
+                    elements.error4.innerHTML = "Phone is required"
+                }
+                if (errors[i] == "Phone is invalid") {
+                    elements.error4.innerHTML = "Phone is invalid"
+                }
+                if (errors[i] == "Gender is required") {
+                    elements.error6.innerHTML = "Gender is required"
+                    gender.options[0].selected = true;
+                }
+                if (errors[i] == "Image is required") {
+                    elements.error8.innerHTML = "Image is required"
+                } 
+            }
+      var genders = [{{#each re_gender}} "{{this}}", {{/each}}]
+            for (var i = 0; i < genders.length; i++) {
+                if (genders[i] == "Male") {
+                    document.getElementById('inputgender').options[1].selected = true;
+                }
+                if (genders[i] == "Female") {
+                    document.getElementById('inputgender').options[2].selected = true;
+                }
+                if (genders[i] == "Other") {
+                    document.getElementById('inputgender').options[3].selected = true;
+                }
+            }
+  </script>
+</body>
+
+</html>

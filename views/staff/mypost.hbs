@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Facebook</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../css/all.min.css" rel="stylesheet">
+    <link href="../../css/mypost.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="popop-background"></div>
+    <div class="thim-div" style="margin-top: 50px;">
+        <div class="hadr-thim-bar">
+            <span id="thim-button" class="fas fa-caret-right"></span>
+
+            <p>Background</p>
+            <div class="bg-color">
+                <div id="bg-c-1" class="bg-color-1"></div>
+                <div id="bg-c-2" class="bg-color-2"></div>
+                <div id="bg-c-3" class="bg-color-3"></div>
+                <div id="bg-c-4" class="bg-color-4"></div>
+                <div id="bg-c-5" class="bg-color-5"></div>
+                <div id="bg-c-6" class="bg-color-6"></div>
+            </div>
+            <br>
+            <p>Text Color</p>
+            <div class="bg-color">
+                <div id="txt-c-1" class="bg-color-1"></div>
+                <div id="txt-c-2" class="bg-color-2"></div>
+                <div id="txt-c-3" class="bg-color-3"></div>
+                <div id="txt-c-4" class="bg-color-4"></div>
+                <div id="txt-c-5" class="bg-color-5"></div>
+                <div id="txt-c-6" class="bg-color-6"></div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <section class="cover-image-section">
+        <header class="cover-hader-site">
+
+            <img src="https://res.cloudinary.com/dtphprlvv/image/upload/v1681852836/uploads/cover-image_nqiruq.jpg">
+
+            <div class="cover-image-div">
+                <div class="cover-image-edite-btn">
+
+                </div>
+            </div>
+
+        </header>
+    </section>
+
+    <section class="profile-section" style="background-color: white;">
+        <div class="profile-section-in">
+
+            <div class="profile-image-site">
+                <div class="profile-image-div">
+                    <img src="{{user.imgURL}}" alt="">
+                </div>
+            </div>
+            <div class="profile-name-info">
+                <h1>
+                    <span class="pro-txt" id="profile_name" >{{user.name}}</span>
+                    <br>
+                    <br>
+                    <span id="nik-name" style="font-size: 17px;">Email: {{user.email}}</span>
+                </h1>
+            </div>
+            <div class="profile-button-site">
+                <div class="btn-site-pro">
+                    <a href="/user/profile" style="text-decoration: none;">
+                        <span class="edit-profile-btn">
+                            <i class="fas fa-pen"></i>
+                            Edit Profile
+                        </span>
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="full-navbar" style="background-color: white;">
+        <nav class="navbar-site">
+
+            <ul compact="txt-color-c">
+                <a href="#" style="">
+                    <li class=" txt-cc activ-navbar">Posts</li>
+                </a>
+
+                <a href="#">
+                    <li class=" txt-cc">About</li>
+                </a>
+
+            </ul>
+
+            <div class="nav-btn" style="background-color: white;">
+                <i class="fas fa-ellipsis-h"></i>
+            </div>
+
+        </nav>
+
+
+    </section>
+
+
+    <section class="post-section" style="background-color: white;">
+        <div class="post-section-in">
+
+            <section class="info-section">
+
+                <div class="profile-lock-div">
+                    <div class="icon-pld">
+                        <i class="fab fa-keycdn"></i>
+                    </div>
+                    <div class="pld-text">
+                        <h3>Staff in University of GreenWich</h3>
+                        <a href="https://greenwich.edu.vn/">Link to GreenWich VietNam</a>
+                    </div>
+                </div>
+
+                <div class="about-info">
+                    <center>
+                        <h4>Introduction</h4>
+                    </center>
+
+                    <div class="card mt-3" style="border: none; ">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        class="feather feather-globe mr-2 icon-inline" style="border: none;">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                                        <path
+                                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                        </path>
+                                    </svg>Website</h6>
+                                <span class="text-secondary"><a href="/">idea-system-green.onrender.com</a></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0" style="margin-top:20px;"><svg xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        class="feather feather-github mr-2 icon-inline">
+                                        <path
+                                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                        </path>
+                                    </svg>Github</h6>
+                                <span class="text-secondary"><a
+                                        href="https://github.com/ImAnHoang/COMP1640-Final">COMP1640-Final</a></span>
+                            </li>
+
+
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0" style="margin-top:20px;"><svg xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" viewBox="0 0 24 24">
+                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="2"
+                                            d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2zm-10-8v6m-3-3h6" />
+                                    </svg>
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                    </svg>Backlog
+                                </h6>
+                                <span class="text-secondary"><a
+                                        href="https://docs.google.com/spreadsheets/u/1/d/1Nqb16-Qo8hFcIxf-OmKDgF9KC663lRLfyHDk1G08HEQ/edit#gid=1280617121">Backlog-1640</a></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+            <section class="post-info">
+
+                <div class="box-design post-filter">
+
+                    <div class="filter-site">
+                        <span>Posts</span>
+                        <div class="fil-ter">
+                            <button style="font-size:14px;"><i class="fas fa-cog"></i> Manager Posts</button>
+                        </div>
+                    </div>
+                </div>
+
+                {{#each all_idea}}
+                <input type="hidden" class="like_user" value="{{this.like_user}}">
+                <input type="hidden" class="dislike_user" value="{{this.dislike_user}}">
+
+                <div class="idea bg-white p-4 rounded shadow mt-3" data-id="{{this._id}}">
+                    <!-- author -->
+                    <div class="d-flex justify-content-between">
+                        <!-- avatar -->
+                        <div class="d-flex">
+                            <img src="{{this.user_img}}" alt="avatar" class="rounded-circle me-2"
+                                style="width: 38px; height: 38px; object-fit: cover" />
+                            <div>
+
+                                <p class="userpost m-0 fw-bold">{{this.user_name}}</p>
+                                <span class="text-muted fs-7">{{this.date}}</span>
+                            </div>
+                        </div>
+                        <!-- edit -->
+                        <i class="fas fa-ellipsis-h" type="button" id="post1Menu" data-bs-toggle="dropdown"
+                            aria-expanded="false"></i>
+                        <!-- edit menu -->
+                        <ul class="dropdown-menu border-0 shadow" aria-labelledby="post1Menu">
+                            <li class="d-flex align-items-center">
+                                <a class="dropdown-item d-flex justify-content-around align-items-center fs-7"
+                                    href="/staff/download/{{this._id}}" style="font-size: 14px;">
+                                    Download files</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!-- post content -->
+                    <div class="mt-3">
+                        <div>
+                            <h6
+                                style="color: rgb(248, 17, 121); word-wrap: break-word; overflow-wrap: break-word; max-width: 650px;">
+                                Title: {{this.title}}
+                            </h6>
+                            <span id="{{this._id}}"></span>
+                        </div>
+
+                        <div>
+                            <h7
+                                style="color: rgb(1, 75, 109);margin-left:20px; font-size:16px; word-wrap: break-word; overflow-wrap: break-word; max-width: 650px;">
+                                Campaign: {{this.campaign}}
+                            </h7>
+                            <h7
+                                style="color: rgb(245, 174, 7);margin-left:20px;font-size:16px; word-wrap: break-word; overflow-wrap: break-word; max-width: 650px;">
+                                Category: {{this.category}}
+                            </h7>
+
+                        </div>
+                        <!-- content -->
+                        <div class="w-100">
+                            <p
+                                style=" word-wrap: break-word; margin-left:20px;margin-top:15px; overflow-wrap: break-word; max-width: 650px;">
+                                Content: {{this.content}}
+                            </p>
+                        </div>
+                        <!-- likes & comments -->
+                        <div class="post__comment mt-3 position-relative">
+                            <!-- likes -->
+                            <div class="d-flex align-items-center top-0 start-0 position-absolute"
+                                style="height: 50px; z-index: 5">
+                                <div class="me-2">
+                                    <i class="text-primary fas fa-thumbs-up"></i>
+                                </div>
+                                <span></span>
+                                <p class="likecount m-0 text-primary fs-7 ml-3">{{this.like}}</p>
+                                <div class="ms-2 me-2">
+                                    <i class="text-danger fas fa-thumbs-down ml-6"></i>
+                                </div>
+                                <p class="dislike-count m-0 text-danger fs-7 ml-3">{{this.dislike}}</p>
+                            </div>
+                            <!-- comments start-->
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item border-0">
+                                    <!-- comment collapse -->
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <div class="showcomment accordion-button collapsed pointer d-flex justify-content-end"
+                                            data-bs-toggle="collapse" data-id="{{this._id}}"
+                                            data-bs-target="#h{{this._id}}" aria-expanded="false"
+                                            aria-controls="{{this._id}}">
+                                            <p class="m-0"><span class="total-comment">{{this.comment.length}}</span>
+                                                Comments <i class="fa fa-comment text-primary" aria-hidden="true"></i>
+                                            </p>
+
+                                        </div>
+                                    </h2>
+                                    <hr />
+
+                                    <div class="d-flex justify-content-around">
+                                        <div data-id="{{this._id}}" data-count="{{this.like}}"
+                                            class="like dropdown-item rounded d-flex justify-content-center align-items-center pointer text-mutedp-1 disabled">
+                                            <a class="like-icon" style="text-decoration: none; color:black" disable="true"><i
+                                                    class="likeicon fas fa-thumbs-up me-3 text-primary"></i>
+                                                <p style="display: inline-block;" class="text-like m-0">Like</p>
+                                            </a>
+                                        </div>
+
+                                        <div data-dislike="{{this._id}}" data-number="{{this.dislike}}"
+                                            class="dislike dropdown-item rounded d-flex justify-content-center align-items-center pointer text-muted p-1 disabled">
+                                            <a style="text-decoration: none; color: black;" >
+                                                <i class="dislike-icon fas fa-thumbs-down me-3 text-danger"></i>
+                                                <p style="display: inline-block;" class="text-dislike m-0">Dislike
+                                                </p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- comment expand -->
+                                    <div id="h{{this._id}}" class="accordion-collapse collapse"
+                                        aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <hr />
+
+                                        <div class="accordion-body">
+                                            <div id="check_comment" style="margin-bottom: 20px;">
+                                                <p style="font-size: 15px; color: rgb(224, 35, 63);">Comments</p>
+                                                <div id="all_comment">
+                                                    {{#each this.comment}}
+                                                    <div class="comment_element d-flex align-items-center  "
+                                                        data-ids="huy1">
+                                                        <img class="commenter_img" src="{{this.user_img}}" alt="avatar"
+                                                            class="rounded-circle me-2"
+                                                            style="width: 38px; height: 38px; " />
+                                                        <!-- comment text -->
+                                                        <div class="p-3 rounded comment__input w-100">
+                                                            <!-- comment menu of author -->
+                                                            <p class="commenter_name fw-bold m-0">{{this.user_name}}
+                                                            <p class="commenter_name_text m-0 fs-7 bg-gray p-2 rounded"
+                                                                style=" word-wrap: break-word; overflow-wrap: break-word; max-width: 475px; ">
+                                                                {{this.comment_text}}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    {{/each}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end -->
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </section>
+
+        </div>
+    </section>
+
+</body>
+<script src="../../socket.io/socket.io.js"></script>
+</html>

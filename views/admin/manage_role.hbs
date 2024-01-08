@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap User Management Data Table</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/1e27f03b11.js" crossorigin="anonymous"></script>
+    <link href="../css/ad_index.css" rel="stylesheet">
+</head>
+<style>
+    .nav-tabs {
+        margin-bottom: 0.8%;
+        margin-left: 1%;
+    }
+
+    .nav-tabs .nav-link {
+        font-weight: 600;
+        color: #1a84f6;
+        border: none;
+    }
+
+    .nav-tabs .nav-link.active {
+        border: none;
+        color: red;
+        border-bottom: 2px solid red;
+    }
+</style>
+
+<body>
+    {{#if alluser.length}}
+    <div class="card mb-7">
+        <center>
+            <div class="card-header">
+                <h5 class="mb-0">Manager Users Role </h5>
+            </div>
+        </center>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" id="admin-tab" data-toggle="tab" href="/admin/get_admin" role="tab"
+                    aria-selected="false">Admin</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="staff-tab" data-toggle="tab" href="/admin/get_staff" role="tab"
+                    aria-selected="false">Staff</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="qa-manager-tab" data-toggle="tab" href="/admin/get_qamanager" role="tab"
+                    aria-selected="false">QA Manager</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="qc-manager-tab" data-toggle="tab" href="/admin/get_qcmanager" role="tab"
+                    aria-selected="false">QC Manager</a>
+            </li>
+        </ul>
+
+        <div class="table-responsive">
+            <table class="table table-hover table-nowrap">
+                <thead class="table-light">
+                    <tr>
+                        <th style="color: rgb(1, 1, 1);" scope="col">Name</th>
+                        <th style="color: rgb(1, 1, 1);" scope="col">UserName</th>
+                        <th style="color: rgb(1, 1, 1);" scope="col">Role</th>
+                        <th style="color: rgb(1, 1, 1);">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each alluser}}
+                    <tr>
+                        <td>
+                            <img alt="..." src="{{this.imgURL}}" class="avatar avatar-sm rounded-circle me-2">
+                            <a style="color: black;" class="text-heading font-semibold" style="font-size: 15px;" href="#">
+                                {{this.name}}
+                            </a>
+                        </td>
+                        <td style="font-size: small; padding-top:25px">
+                            {{this.username}}
+                        </td>
+                        <td style="color: red; font-size: small; padding-top:25px; text-transform: uppercase;" >
+                            {{this.role}}
+                        </td>
+
+                        <td class="text-end">
+                            <a href="/admin/edit/{{this._id}}"><i class="fas fa-edit ml-3 mt-2"></i></a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+     <ul class="pagination modal-4">
+        <li><a href="" class="prev">
+                <i class="fa fa-chevron-left"></i>
+            </a>
+        </li>
+        {{#each total_page}}
+        <li><a href="/admin/manage_role?page={{this}}">{{this}}</a></li>
+        {{/each}}
+
+        <li><a href="" class="next">
+                <i class="fa fa-chevron-right"></i>
+            </a></li>
+    </ul>
+    {{else}}
+    <center>
+        <span style="margin-top: 50px;" class="badge badge-danger">No users found</span>
+    </center>
+    {{/if}}
+    <script>
+
+        var role_arr = [{{#each role_arr}} "{{this}}", {{/each}}]
+            for (var i = 0; i < role_arr.length; i++) {
+                if (role_arr[i] == "admin") {
+                    document.getElementById("admin-tab").classList.add("active");
+                }
+                if (role_arr[i] == "staff") {
+                    document.getElementById("staff-tab").classList.add("active");
+                }
+                if (role_arr[i] == "qamanager") {
+                    document.getElementById("qa-manager-tab").classList.add("active");
+                }
+                if (role_arr[i] == "qcmanager") {
+                    document.getElementById("qc-manager-tab").classList.add("active");
+                }
+            }
+          var url = window.location.href;
+        var activePage = url.substring(url.lastIndexOf('=') + 1);
+        var li = document.getElementsByClassName('pagination')[0].getElementsByTagName('li');
+        for (var i = 0; i < li.length; i++) {
+            var a = li[i].getElementsByTagName('a')[0];
+            if (a.innerHTML == activePage) {
+                a.classList.add('active');
+            }
+        }
+        var prev = document.getElementsByClassName('prev')[0];
+        var next = document.getElementsByClassName('next')[0];
+        prev.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (activePage > 1) {
+                window.location.href = '/admin/manage_role?page=' + (activePage - 1);
+            }
+        });
+        next.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (activePage < li.length - 2) {
+                window.location.href = '/admin/manage_role?page=' + (parseInt(activePage) + 1);
+            }
+        });
+    </script>
+</body>
